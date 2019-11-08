@@ -13,7 +13,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	public List<Employee> getAllEmployees() {
 
-		Employee e1 = new Employee();
+	/*	Employee e1 = new Employee();
 		e1.setFirstName("e1");
 		employees.add(e1);
 		Employee e2 = new Employee();
@@ -24,7 +24,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		employees.add(e3);
 		employees.sort((employee1,employee2) -> {
 			return employee1.getFirstName().compareTo(employee2.getFirstName());
-		});
+		}); */
 		
 		return employees;
 	}

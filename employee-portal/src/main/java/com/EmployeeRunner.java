@@ -16,6 +16,7 @@ public class EmployeeRunner {
 		SpringApplication application = new SpringApplication(EmployeeRunner.class);
 		application.setDefaultProperties(Collections.singletonMap("server.port", 7075));
 		application.run(args);
+		System.out.println(EmployeeRunner.class.getName());
 	}
 	
 	@Bean
