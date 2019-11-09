@@ -1,14 +1,11 @@
-package com.service;
+package com.dao;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
 import com.model.Employee;
 
-@Service
-public interface EmployeeService {
-	
+public interface EmployeeDAO {
+
 	public boolean addEmployee(Employee employee);
 	
 	public boolean updateEmployee(Employee employee, int empID);
@@ -16,4 +13,5 @@ public interface EmployeeService {
 	public List<Employee> getAllEmployees();
 	
 	public Employee get(int empID);
+	
 }

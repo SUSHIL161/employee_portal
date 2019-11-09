@@ -9,6 +9,7 @@ public class Employee {
 	private String Gender;
 	private LocalDate dateOfBirth;
 	private String department;
+	private int empID;
 	
 	public String getFirstName() {
 		return firstName;
@@ -44,6 +45,36 @@ public class Employee {
 	public Employee() {
 		
 	}
-	
+	public int getEmpID() {
+		return empID;
+	}
+	public void setEmpID(int empID) {
+		this.empID = empID;
+	}
+	@Override
+	public int hashCode() {
+		StringBuilder empID = new StringBuilder();
+		empID.append(getFirstName());
+		empID.append(getLastName());
+		empID.append(getDepartment());
+		empID.append(getGender());
+		empID.append(getDateOfBirth());
+		return empID.toString().hashCode();
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Employee employee = (Employee) obj;
+		return getFirstName().equals(employee.getFirstName()) && 
+				getLastName().equals(employee.getLastName()) &&
+				getDepartment().equals(employee.getDepartment()) &&
+				getDateOfBirth().equals(employee.getDateOfBirth()) &&
+				getGender().equals(employee.getGender());
+	}
 	
 }

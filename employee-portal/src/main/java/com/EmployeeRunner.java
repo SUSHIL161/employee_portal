@@ -6,6 +6,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import com.dao.EmployeeDAO;
+import com.dao.impl.EmployeeDAOImpl;
 import com.service.EmployeeService;
 import com.service.impl.EmployeeServiceImpl;
 
@@ -22,6 +24,11 @@ public class EmployeeRunner {
 	@Bean
 	public EmployeeService getService() {
 		return new EmployeeServiceImpl();
+	}
+	
+	@Bean
+	public EmployeeDAO getEmployeeDAO() {
+		return new EmployeeDAOImpl();
 	}
 	
 }
