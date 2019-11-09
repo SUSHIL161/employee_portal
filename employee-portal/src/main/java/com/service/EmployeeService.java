@@ -15,5 +15,5 @@ public interface EmployeeService {
 	
 	public List<Employee> getAllEmployees();
 	
-	public Employee get(int empID);
+	public Employee getEmployee(int empID);
 }

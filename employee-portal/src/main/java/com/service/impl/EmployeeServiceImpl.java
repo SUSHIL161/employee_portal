@@ -29,8 +29,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public Employee get(int empID) {
-		return employeeDAO.get(empID);
+	public Employee getEmployee(int empID) {
+		return employeeDAO.getEmployee(empID);
 	}
 	
 	

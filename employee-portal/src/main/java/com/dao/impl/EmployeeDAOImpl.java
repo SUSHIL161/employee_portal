@@ -22,7 +22,7 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 	}
 
 	@Override
-	public Employee get(int empID) {
+	public Employee getEmployee(int empID) {
 		return employees.get(empID);
 	}
 
@@ -39,12 +39,15 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 
 	@Override
 	public boolean updateEmployee(Employee employee, int empID) {
+		if(!validateEmployee(employee) || !employees.containsKey(empID)) {
+			return false;
+		}
 		employees.put(empID, employee);
 		return true;
 	}
 
 	private boolean validateEmployee(Employee employee) {
-		return  
+		return  employee == null ? false :
 			(employee.getFirstName() != null && employee.getFirstName().trim().length() > 0) &&
 			(employee.getLastName() != null && employee.getLastName().trim().length() > 0) && 
 			(employee.getDateOfBirth() != null) &&

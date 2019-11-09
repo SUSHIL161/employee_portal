@@ -59,7 +59,7 @@ public class Employee {
 		empID.append(getDepartment());
 		empID.append(getGender());
 		empID.append(getDateOfBirth());
-		return empID.toString().hashCode();
+		return empID.toString().hashCode() < 0 ? -empID.toString().hashCode(): empID.toString().hashCode();
 	}
 	@Override
 	public boolean equals(Object obj) {
