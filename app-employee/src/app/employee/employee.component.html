@@ -1,10 +1,5 @@
 <div>
-    <div class="header" *ngIf="i18text">
-        <div class="header-right">
-          <a class="active" href="#home"> {{ i18text.employee.headers.home}} </a>
-        </div>
-      </div>
-    <div >
+    <div class="emp-table">
       <table>
         <tr>
           <th *ngFor="let header of headers">{{ header }}</th>
