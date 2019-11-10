@@ -12,7 +12,8 @@ export class EmployeeComponent implements OnInit {
   headers: any = [];
   i18text: any;
   employee: any = {};
-  showView: any = {}
+  showView: any = {};
+  employeeBeingEdited: any = {};
   constructor(private dataService: DataService, private translateService: TranslateService) {
     this.translateService.setDefaultLang('en');
     this.translateService.use('en');
@@ -39,7 +40,11 @@ export class EmployeeComponent implements OnInit {
   }
 
   onUpdate = (employee) => {
-    console.log(employee);
+    this.employee = JSON.parse(JSON.stringify(employee));
+    this.employeeBeingEdited = JSON.parse(JSON.stringify(employee));
+    this.showView['registration'] = true;
+    this.showView['viewAll'] = false;
+
   }
   
   submit = () => {
