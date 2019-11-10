@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../service/data.service';
-
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',
@@ -10,17 +10,26 @@ export class EmployeeComponent implements OnInit {
 
   employees: any = [];
   headers: any = [];
-  constructor(private dataService: DataService) { }
+  i18text: any;
+  constructor(private dataService: DataService, private translateService: TranslateService) {
+    this.translateService.setDefaultLang('en');
+    this.translateService.use('en');
+    this.translateService.get('employee').subscribe((res: any) => {
+      this.i18text = {'employee': res};
+      console.log(JSON.stringify(this.i18text));
+    }, (error) => {
+      console.log(error)
+    });
+
+   }
 
   ngOnInit() {
     this.dataService.getAllEmployees().subscribe(
-      response => this.employees = response
-    ), error => {
-
-    }, () => {
-      
-    };
+      (response) => {this.employees = response },
+      error => { },
+    );
     this.headers = ['First Name', 'Last Name', 'Gender', 'Date of Birth', 'Department'];
+
   }
 
 
