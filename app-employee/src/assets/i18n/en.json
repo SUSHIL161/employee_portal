@@ -1,7 +1,7 @@
 {
     "employee" : {
         "headers": {
-            "registration": "Registration",
+            "registration": "Employee Registration",
             "list": "Employee List "
         },
         "body": {

@@ -49,9 +49,19 @@ export class EmployeeComponent implements OnInit {
   
   submit = () => {
     this.dataService.addEmployee(this.employee).subscribe((response) => {
-      console.log(response);
+      if(response.body) {
+        let employee = JSON.parse(JSON.stringify(this.employee));
+        this.employees.push(employee);
+        this.employees.sort((first,second) => first.firstName.toLowerCase() > second.firstName.toLowerCase() ? 1:  first.firstName.toLowerCase() < second.firstName.toLowerCase() ? -1 : 0);
+        this.employee = {};
+        alert('Saved Successfully')
+        this.showView.registration = false;
+        this.showView.viewAll = true;
+      } else {
+        alert('Failed to Save')
+      }
     }), error => {
-      console.log("eror" + error);
+      alert('Failed to Save');
     }
   }
 

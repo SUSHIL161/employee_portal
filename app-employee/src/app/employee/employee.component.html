@@ -33,13 +33,12 @@
           placeholder="{{ i18text.employee.form.label.firstName | translate }}" name="firstName">
       </div>
       <div class="form-group">
-        <label for="lastName">{{ i18text.employee.form.firstName | translate }}</label>
+        <label for="lastName">{{ i18text.employee.form.lastName | translate }}</label>
         <input type="text" class="form-control" id="lastName" [(ngModel)] = "employee.lastName"
           placeholder="{{ i18text.employee.form.label.lastName | translate }}" name="pswd">
       </div>
       <div class="form-group">
-          <label for="firstName"> {{ i18text.employee.form.label.gender | translate }} </label> &nbsp; &nbsp;
-
+          <label for="gender-male"> {{ i18text.employee.form.label.gender | translate }} </label> &nbsp; &nbsp;
         <div class="form-check-inline">
           <label class="form-check-label" for="gender-male">
             <input type="radio" class="form-check-input" id="gender-male" [(ngModel)]="employee.gender"
@@ -48,7 +47,7 @@
           </label>
         </div>
         <div class="form-check-inline">
-          <label class="form-check-label" for="gender-female">
+          <label class="gender-female" for="gender-female">
             <input type="radio" class="form-check-input" id="gender-female" [(ngModel)]="employee.gender"
              name="gender" value="{{ i18text.employee.form.female | translate }}">
             {{ i18text.employee.form.female | translate }}
