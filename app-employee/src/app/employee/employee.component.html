@@ -1,25 +1,48 @@
 <div class="sidenav">
   </div>
 <div class="header" *ngIf="i18text">
-    <button id="emp-reg" class="tablink" (click)="selectOption('registration')" id="defaultOpen">{{i18text.employee.headers.registration | translate }}</button>
-    <button id="emp-list" class="tablink" (click)="selectOption('details')">{{i18text.employee.headers.list | translate }}</button>
+    <button id="emp-reg" class="tablink" (click)="selectOption('registration')" id="defaultOpen">{{ i18text.employee.headers.registration | translate }}</button>
+    <button id="emp-list" class="tablink" (click)="selectOption('details')">{{ i18text.employee.headers.list | translate }}</button>
 </div>
-<div class="registration">
-    <div *ngIf="i18text" class="emp-details"> <h3 style="text-align: center;"> {{i18text.employee.headers.list | translate }}</h3></div>
+<div class="registration" *ngIf="view">
+    <div *ngIf="i18text" class="emp-details">
+      <h3 class="employee-header"> {{ i18text.employee.headers.list | translate }}</h3>
+    </div>
     <div>
         <div class="emp-table">
           <table>
             <tr>
-              <th *ngFor="let header of headers">{{ header  | translate }}</th>
+              <th class="emp-row-header" *ngFor="let header of headers">{{ header  | translate }}</th>
             </tr>
-            <tr *ngFor="let employee of  employees" (click)="onUpdate(employee)">
-              <td> {{employee.firstName | translate }} </td>
-              <td> {{employee.lastName | translate }} </td>
-              <td> {{employee.gender | translate }} </td>
-              <td> {{employee.dateOfBirth | translate }} </td>
-              <td> {{employee.department | translate }} </td>
+            <tr class="emp-row" *ngFor="let employee of  employees" (click)="onUpdate(employee)">
+              <td> {{ employee.firstName | translate }} </td>
+              <td> {{ employee.lastName | translate }} </td>
+              <td> {{ employee.gender | translate }} </td>
+              <td> {{ employee.dateOfBirth | translate }} </td>
+              <td> {{ employee.department | translate }} </td>
             </tr>
           </table>
         </div>
     </div>
 </div>
+<div class="container" *ngIf="i18text">
+    <h3 class="employee-header">{{ i18text.employee.form.registration | translate }}</h3>
+      <div class="form-group">
+        <label for="firstName"> {{ i18text.employee.form.label.firstName | translate }} </label>
+        <input type="text" class="form-control" id="firstName" [(ngModel)] = "employee.firstName"
+        placeholder="{{ i18text.employee.form.label.firstName | translate }}" name="firstName">
+      </div>
+      <div class="form-group">
+        <label for="lastName">{{ i18text.employee.form.firstName | translate }}</label>
+        <input type="text" class="form-control" id="lastName" placeholder="{{ i18text.employee.form.label.lastName | translate }}" name="pswd">
+      </div>
+      <div class="form-group form-check">
+        <label class="form-check-label">
+          <input class="form-check-input" type="checkbox" name="remember"> Remember me
+        </label>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+
+
+

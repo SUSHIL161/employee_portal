@@ -6,6 +6,21 @@
         },
         "body": {
             "details": "Employee Details:"
+        },
+        "form": {
+            "registration": "Employeee Registration",
+            "email": "Email",
+            "dob": "Date of Birth",
+            "firstName": "First Name",
+            "lastName": "Last Name",
+            "department": "Department",
+            "label": {
+                "email": "Enter Email",
+                "dob": "Enter Date of Birth",
+                "firstName": "Enter First Name",
+                "lastName": "Enter Last Name",
+                "department": "Enter Department"
+            }
         }
     }
 }
