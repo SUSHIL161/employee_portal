@@ -12,6 +12,7 @@ export class EmployeeComponent implements OnInit {
   headers: any = [];
   i18text: any;
   employee: any = {};
+  showView: any = {}
   constructor(private dataService: DataService, private translateService: TranslateService) {
     this.translateService.setDefaultLang('en');
     this.translateService.use('en');
@@ -30,6 +31,10 @@ export class EmployeeComponent implements OnInit {
       error => { },
     );
     this.headers = ['First Name', 'Last Name', 'Gender', 'Date of Birth', 'Department'];
+    this.showView = {
+      'registration': false,
+      'viewAll': false
+    }
 
   }
 
@@ -43,5 +48,10 @@ export class EmployeeComponent implements OnInit {
     }), error => {
       console.log("eror" + error);
     }
+  }
+
+  selectView = (option1, option2) => {
+    this.showView[option1] = true;
+    this.showView[option2] = false;
   }
 }

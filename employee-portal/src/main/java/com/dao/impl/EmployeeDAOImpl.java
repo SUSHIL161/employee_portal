@@ -50,9 +50,10 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 
 	private boolean validateEmployee(Employee employee) {
 		return  employee == null ? false :
-			(employee.getFirstName() != null && employee.getFirstName().trim().length() > 0) &&
-			(employee.getLastName() != null && employee.getLastName().trim().length() > 0) && 
-			(employee.getDateOfBirth() != null) &&
+			employee.getFirstName() != null && employee.getFirstName().trim().length() > 0 &&
+			employee.getLastName() != null && employee.getLastName().trim().length() > 0 &&
+			employee.getGender() != null && employee.getGender().trim().length() > 0 &&
+			employee.getDateOfBirth() != null &&
 			employee.getDepartment() != null && employee.getDepartment().length() > 0;
  	}
 }

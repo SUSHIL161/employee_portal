@@ -1,11 +1,11 @@
 <div class="sidenav">
   </div>
 <div class="header" *ngIf="i18text">
-    <button id="emp-reg" class="tablink" (click)="selectOption('registration')" id="defaultOpen">{{ i18text.employee.headers.registration | translate }}</button>
-    <button id="emp-list" class="tablink" (click)="selectOption('details')">{{ i18text.employee.headers.list | translate }}</button>
+    <button id="emp-reg" class="tablink" (click)="selectView('registration', 'viewAll')" id="defaultOpen">{{ i18text.employee.headers.registration | translate }}</button>
+    <button id="emp-list" class="tablink" (click)="selectView('viewAll', 'registration')">{{ i18text.employee.headers.list | translate }}</button>
 </div>
-<div class="registration" *ngIf="view">
-    <div *ngIf="i18text" class="emp-details">
+<div class="view-details" *ngIf="i18text && showView && showView.viewAll">
+    <div class="emp-details">
       <h3 class="employee-header"> {{ i18text.employee.headers.list | translate }}</h3>
     </div>
     <div>
@@ -25,7 +25,7 @@
         </div>
     </div>
 </div>
-<div class="container" *ngIf="i18text">
+<div class="container" *ngIf="i18text && showView && showView.registration">
     <h3 class="employee-header">{{ i18text.employee.form.registration | translate }}</h3>
       <div class="form-group">
         <label for="firstName"> {{ i18text.employee.form.label.firstName | translate }} </label>
@@ -69,7 +69,10 @@
       </div>
       
       <button type="submit" (click) = "submit()" class="btn btn-primary">{{ i18text.employee.form.submit | translate }}</button>
-  </div>
+</div>
+<div *ngIf="i18text && showView && !showView.viewAll && !showView.registration">
+    <h3 style="text-align: center;"> Select one option from header</h3>
+</div>
 
 
 
