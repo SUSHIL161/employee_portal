@@ -1,24 +1,25 @@
 <div class="sidenav">
   </div>
-<div class="header">
-    <button class="tablink" (click)="selectOption('registration')" id="defaultOpen">Registration</button>
-    <button class="tablink" (click)="selectOption('details')">Details</button>
+<div class="header" *ngIf="i18text">
+    <button id="emp-reg" class="tablink" (click)="selectOption('registration')" id="defaultOpen">{{i18text.employee.headers.registration | translate }}</button>
+    <button id="emp-list" class="tablink" (click)="selectOption('details')">{{i18text.employee.headers.list | translate }}</button>
 </div>
-
-<div style="margin-top: 15px;"> <h3 style="text-align: center;"> Employee Details:</h3></div>
-<div>
-    <div class="emp-table">
-      <table>
-        <tr>
-          <th *ngFor="let header of headers">{{ header }}</th>
-        </tr>
-        <tr *ngFor="let employee of  employees" (click)="onUpdate(employee)">
-          <td> {{employee.firstName}} </td>
-          <td> {{employee.lastName}} </td>
-          <td> {{employee.gender}} </td>
-          <td> {{employee.dateOfBirth}} </td>
-          <td> {{employee.department}} </td>
-        </tr>
-      </table>
+<div class="registration">
+    <div *ngIf="i18text" class="emp-details"> <h3 style="text-align: center;"> {{i18text.employee.headers.list | translate }}</h3></div>
+    <div>
+        <div class="emp-table">
+          <table>
+            <tr>
+              <th *ngFor="let header of headers">{{ header  | translate }}</th>
+            </tr>
+            <tr *ngFor="let employee of  employees" (click)="onUpdate(employee)">
+              <td> {{employee.firstName | translate }} </td>
+              <td> {{employee.lastName | translate }} </td>
+              <td> {{employee.gender | translate }} </td>
+              <td> {{employee.dateOfBirth | translate }} </td>
+              <td> {{employee.department | translate }} </td>
+            </tr>
+          </table>
+        </div>
     </div>
 </div>

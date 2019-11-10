@@ -1,9 +1,11 @@
 {
     "employee" : {
         "headers": {
-            "home": "Home",
             "registration": "Registration",
-            "viewall": "View All"
+            "list": "Employee List "
+        },
+        "body": {
+            "details": "Employee Details:"
         }
     }
 }

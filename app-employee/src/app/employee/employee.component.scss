@@ -69,4 +69,11 @@ tr:hover {
   background-color: #555;
   overflow-x: hidden;
 }
+button:active{
+  background: gray;
+}
+button:focus{
+  background: gray;
+}
+
 
