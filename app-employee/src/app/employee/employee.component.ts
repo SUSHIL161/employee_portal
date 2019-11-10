@@ -36,4 +36,7 @@ export class EmployeeComponent implements OnInit {
     console.log(employee);
   }
 
+  selectOption = (option) => {
+    console.log(option);
+  }
 }
