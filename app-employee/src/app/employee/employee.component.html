@@ -1,18 +1,21 @@
-
-<div *ngIf="i18text">
-  {{ i18text.employee.headers.home}}
-</div>
-<div >
-  <table>
-    <tr>
-      <th *ngFor="let header of headers">{{ header }}</th>
-    </tr>
-    <tr *ngFor="let employee of  employees">
-      <td> {{employee.firstName}} </td>
-      <td> {{employee.lastName}} </td>
-      <td> {{employee.gender}} </td>
-      <td> {{employee.dateOfBirth}} </td>
-      <td> {{employee.department}} </td>
-    </tr>
-  </table>
+<div>
+    <div class="header" *ngIf="i18text">
+        <div class="header-right">
+          <a class="active" href="#home"> {{ i18text.employee.headers.home}} </a>
+        </div>
+      </div>
+    <div >
+      <table>
+        <tr>
+          <th *ngFor="let header of headers">{{ header }}</th>
+        </tr>
+        <tr *ngFor="let employee of  employees" (click)="onUpdate(employee)">
+          <td> {{employee.firstName}} </td>
+          <td> {{employee.lastName}} </td>
+          <td> {{employee.gender}} </td>
+          <td> {{employee.dateOfBirth}} </td>
+          <td> {{employee.department}} </td>
+        </tr>
+      </table>
+    </div>
 </div>

@@ -32,5 +32,8 @@ export class EmployeeComponent implements OnInit {
 
   }
 
+  onUpdate = (employee) => {
+    console.log(employee);
+  }
 
 }
