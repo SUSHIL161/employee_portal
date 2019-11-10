@@ -18,7 +18,9 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 
 	@Override
 	public List<Employee> getAllEmployees() {
-		return employees.values().stream().collect(Collectors.toList());
+		List<Employee> employeeList = employees.values().stream().collect(Collectors.toList());
+		employeeList.sort((first,second) -> first.getFirstName().compareTo(second.getFirstName()));
+		return employeeList;
 	}
 
 	@Override

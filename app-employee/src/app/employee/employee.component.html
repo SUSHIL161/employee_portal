@@ -30,18 +30,45 @@
       <div class="form-group">
         <label for="firstName"> {{ i18text.employee.form.label.firstName | translate }} </label>
         <input type="text" class="form-control" id="firstName" [(ngModel)] = "employee.firstName"
-        placeholder="{{ i18text.employee.form.label.firstName | translate }}" name="firstName">
+          placeholder="{{ i18text.employee.form.label.firstName | translate }}" name="firstName">
       </div>
       <div class="form-group">
         <label for="lastName">{{ i18text.employee.form.firstName | translate }}</label>
-        <input type="text" class="form-control" id="lastName" placeholder="{{ i18text.employee.form.label.lastName | translate }}" name="pswd">
+        <input type="text" class="form-control" id="lastName" [(ngModel)] = "employee.lastName"
+          placeholder="{{ i18text.employee.form.label.lastName | translate }}" name="pswd">
       </div>
-      <div class="form-group form-check">
-        <label class="form-check-label">
-          <input class="form-check-input" type="checkbox" name="remember"> Remember me
-        </label>
+      <div class="form-group">
+          <label for="firstName"> {{ i18text.employee.form.label.gender | translate }} </label> &nbsp; &nbsp;
+
+        <div class="form-check-inline">
+          <label class="form-check-label" for="gender-male">
+            <input type="radio" class="form-check-input" id="gender-male" [(ngModel)]="employee.gender"
+            name="gender" value="{{ i18text.employee.form.male | translate }}" checked>
+            {{ i18text.employee.form.male | translate }}
+          </label>
+        </div>
+        <div class="form-check-inline">
+          <label class="form-check-label" for="gender-female">
+            <input type="radio" class="form-check-input" id="gender-female" [(ngModel)]="employee.gender"
+             name="gender" value="{{ i18text.employee.form.female | translate }}">
+            {{ i18text.employee.form.female | translate }}
+          </label>
+        </div>
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      
+      <div class="form-group">
+          <label for="dateOfBirth"> {{ i18text.employee.form.label.dateOfBirth | translate }} </label>
+          <input type="date" class="form-control" id="dateOfBirth" [(ngModel)] = "employee.dateOfBirth"
+          placeholder="{{ i18text.employee.form.label.dateOfBirth | translate }}" name="dateOfBirth">
+      </div>
+
+      <div class="form-group">
+          <label for="department"> {{ i18text.employee.form.label.department | translate }} </label>
+          <input type="text" class="form-control" id="department" [(ngModel)] = "employee.department"
+          placeholder="{{ i18text.employee.form.label.department | translate }}" name="department">
+      </div>
+      
+      <button type="submit" (click) = "submit()" class="btn btn-primary">{{ i18text.employee.form.submit | translate }}</button>
   </div>
 
 

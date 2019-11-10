@@ -12,4 +12,8 @@ export class DataService {
   getAllEmployees(): Observable<any> {
     return this.apiService.get("http://localhost:7075/getAllEmployees");
   }
+
+  addEmployee(employee):Observable<any> {
+    return this.apiService.postJSONData("http://localhost:7075/addEmployee", employee, true);
+  }
 }

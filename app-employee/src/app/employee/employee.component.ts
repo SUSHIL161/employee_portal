@@ -36,8 +36,12 @@ export class EmployeeComponent implements OnInit {
   onUpdate = (employee) => {
     console.log(employee);
   }
-
-  selectOption = (option) => {
-    console.log(option);
+  
+  submit = () => {
+    this.dataService.addEmployee(this.employee).subscribe((response) => {
+      console.log(response);
+    }), error => {
+      console.log("eror" + error);
+    }
   }
 }

@@ -9,16 +9,18 @@
         },
         "form": {
             "registration": "Employeee Registration",
-            "email": "Email",
-            "dob": "Date of Birth",
             "firstName": "First Name",
             "lastName": "Last Name",
+            "dateOfBirth": "Date of Birth",
             "department": "Department",
+            "male": "Male",
+            "female": "Female",
+            "submit": "Submit",
             "label": {
-                "email": "Enter Email",
-                "dob": "Enter Date of Birth",
                 "firstName": "Enter First Name",
                 "lastName": "Enter Last Name",
+                "gender": "Select Gender:",
+                "dateOfBirth": "Select Date of Birth",
                 "department": "Enter Department"
             }
         }
