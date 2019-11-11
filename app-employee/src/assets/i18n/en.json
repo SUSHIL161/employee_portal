@@ -23,6 +23,23 @@
                 "dateOfBirth": "Select Date of Birth",
                 "department": "Enter Department"
             }
+        },
+        "validator": {
+            "firstName": {
+                "empty": "Please enter first name",
+                "valid": "First name is not valid"
+            },
+            "lastName": {
+                "empty": "Please enter last name",
+                "valid": "First name is not valid"
+            },
+            "department": {
+                "empty": "Please enter department",
+                "valid": "First name is not valid"
+            },
+            "dateOfBirth": {
+                "empty": "Please choose date of birth"
+            }
         }
     }
 }

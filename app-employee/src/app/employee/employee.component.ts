@@ -15,7 +15,9 @@ export class EmployeeComponent implements OnInit {
   showView: any = {};
   isupdate: boolean = false;
   employeeBeingEdited: any = {};
-  
+  formError:any = {};
+  nameExclPatt: RegExp;
+
   constructor(private dataService: DataService, private translateService: TranslateService) {
     this.translateService.setDefaultLang('en');
     this.translateService.use('en');
@@ -38,6 +40,7 @@ export class EmployeeComponent implements OnInit {
       'registration': false,
       'viewAll': false
     }
+    this.nameExclPatt = new RegExp(/[/\"\\*?<>|',:]/g);
   }
 
   onUpdate = (employee) => {
@@ -93,5 +96,17 @@ export class EmployeeComponent implements OnInit {
     this.showView[option1] = true;
     this.showView[option2] = false;
     this.employee = {};
+    this.formError = {};
+  }
+
+  parseText = (key:string) => {
+    if(key.trim().length > 0) {
+      if(this.formError[key]) {
+        delete this.formError[key]['empty'];
+      }
+    } else {
+      this.formError[key] = {empty: true};
+      return;
+    }
   }
 }

@@ -28,14 +28,24 @@
 <div class="container" *ngIf="i18text && showView && showView.registration">
     <h3 class="employee-header">{{ i18text.employee.form.registration | translate }}</h3>
       <div class="form-group">
-        <label for="firstName"> {{ i18text.employee.form.label.firstName | translate }} </label>
+        <label for="firstName"> {{ i18text.employee.form.firstName | translate }} </label>
         <input type="text" class="form-control" id="firstName" [(ngModel)] = "employee.firstName"
+          name="firstName" #firstName="ngModel" required pattern = "^[a-zA-Z0-9]+$"
           placeholder="{{ i18text.employee.form.label.firstName | translate }}" name="firstName">
+          <span class="label-error" *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
+            <i *ngIf="(firstName.errors && firstName.errors.required)">** {{ 'employee.validator.firstName.empty' | translate }} </i>
+            <i *ngIf="(firstName.errors && firstName.errors.pattern)">** {{ 'employee.validator.firstName.valid' | translate }} </i>
+          </span>
       </div>
       <div class="form-group">
         <label for="lastName">{{ i18text.employee.form.lastName | translate }}</label>
         <input type="text" class="form-control" id="lastName" [(ngModel)] = "employee.lastName"
-          placeholder="{{ i18text.employee.form.label.lastName | translate }}" name="pswd">
+          name="lastName" #lastName="ngModel" required pattern = "^[a-zA-Z0-9]+$"
+          placeholder="{{ i18text.employee.form.label.lastName | translate }}">
+          <span class="label-error" *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+              <i *ngIf="(lastName.errors && lastName.errors.required)">** {{ 'employee.validator.lastName.empty' | translate }} </i>
+              <i *ngIf="(lastName.errors && lastName.errors.pattern)">** {{ 'employee.validator.lastName.valid' | translate }} </i>
+          </span>
       </div>
       <div class="form-group">
           <label for="gender-male"> {{ i18text.employee.form.label.gender | translate }} </label> &nbsp; &nbsp;
@@ -58,13 +68,22 @@
       <div class="form-group">
           <label for="dateOfBirth"> {{ i18text.employee.form.label.dateOfBirth | translate }} </label>
           <input type="date" class="form-control" id="dateOfBirth" [(ngModel)] = "employee.dateOfBirth"
+          name="dateOfBirth" #dateOfBirth="ngModel" required
           placeholder="{{ i18text.employee.form.label.dateOfBirth | translate }}" name="dateOfBirth">
+          <span class="label-error" *ngIf="dateOfBirth.invalid && (dateOfBirth.dirty || dateOfBirth.touched)">
+              <i *ngIf="(dateOfBirth.errors && dateOfBirth.errors.required)">** {{ 'employee.validator.dateOfBirth.empty' | translate }} </i>
+          </span>
       </div>
 
       <div class="form-group">
           <label for="department"> {{ i18text.employee.form.label.department | translate }} </label>
           <input type="text" class="form-control" id="department" [(ngModel)] = "employee.department"
+          name="department" #department="ngModel" required pattern = "^[a-zA-Z0-9]+$"
           placeholder="{{ i18text.employee.form.label.department | translate }}" name="department">
+          <span class="label-error" *ngIf="department.invalid && (department.dirty || department.touched)">
+              <i *ngIf="(department.errors && department.errors.required)">** {{ 'employee.validator.department.empty' | translate }} </i>
+              <i *ngIf="(department.errors && department.errors.pattern)">** {{ 'employee.validator.department.valid' | translate }} </i>
+          </span>
       </div>
       
       <button type="submit" (click) = "submit()" class="btn btn-primary">{{ i18text.employee.form.submit | translate }}</button>
