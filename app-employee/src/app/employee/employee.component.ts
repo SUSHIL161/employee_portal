@@ -13,7 +13,9 @@ export class EmployeeComponent implements OnInit {
   i18text: any;
   employee: any = {};
   showView: any = {};
+  isupdate: boolean = false;
   employeeBeingEdited: any = {};
+  
   constructor(private dataService: DataService, private translateService: TranslateService) {
     this.translateService.setDefaultLang('en');
     this.translateService.use('en');
@@ -36,7 +38,6 @@ export class EmployeeComponent implements OnInit {
       'registration': false,
       'viewAll': false
     }
-
   }
 
   onUpdate = (employee) => {
@@ -44,29 +45,53 @@ export class EmployeeComponent implements OnInit {
     this.employeeBeingEdited = JSON.parse(JSON.stringify(employee));
     this.showView['registration'] = true;
     this.showView['viewAll'] = false;
+    this.isupdate = true;
+  }
 
+  sortEmployee = () => {
+    this.employees.sort((first,second) => first.firstName.toLowerCase() > second.firstName.toLowerCase() ? 1:  first.firstName.toLowerCase() < second.firstName.toLowerCase() ? -1 : 0);
+    this.employee = {};
+    this.showView.registration = false;
+    this.showView.viewAll = true;
   }
   
   submit = () => {
-    this.dataService.addEmployee(this.employee).subscribe((response) => {
-      if(response.body) {
-        let employee = JSON.parse(JSON.stringify(this.employee));
-        this.employees.push(employee);
-        this.employees.sort((first,second) => first.firstName.toLowerCase() > second.firstName.toLowerCase() ? 1:  first.firstName.toLowerCase() < second.firstName.toLowerCase() ? -1 : 0);
-        this.employee = {};
-        alert('Saved Successfully')
-        this.showView.registration = false;
-        this.showView.viewAll = true;
-      } else {
-        alert('Failed to Save')
+    if(this.isupdate) {
+      this.dataService.updateEmployee(this.employee.empID, this.employee).subscribe((response) => {
+        if(response.body) {
+          let index = this.employees.findIndex(employee=> employee.empID === this.employee.empID);
+          if(index >=0 ) {
+            this.employees[index] = this.employee;
+            alert('Upated Successfully');
+            this.sortEmployee();
+          } else {
+            alert('Failed to Save');
+          }
+        } else {
+          alert('Failed to Save');
+        }
+      }, (error) => {
+        alert('Failed to Update');
+      });
+    } else {
+      this.dataService.addEmployee(this.employee).subscribe((response) => {
+        if(response.body) {
+          this.employees.push(this.employee);
+          this.sortEmployee();
+          alert('Saved Successfully');
+        } else {
+          alert('Failed to Save');
+        }
+      }), error => {
+        alert('Failed to Save');
       }
-    }), error => {
-      alert('Failed to Save');
     }
+
   }
 
   selectView = (option1, option2) => {
     this.showView[option1] = true;
     this.showView[option2] = false;
+    this.employee = {};
   }
 }

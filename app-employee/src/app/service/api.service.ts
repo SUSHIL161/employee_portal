@@ -28,7 +28,19 @@ export class ApiService {
         observe: 'response' as 'response'
      };
    }
-    return this.http.post(
-      path, body, httpOptions);
+    return this.http.post(path, body, httpOptions);
+  }
+  putJSONData(path: string, body: Object = {}, enableHttpHeaders: boolean): Observable<any> {
+    let httpOptions = {};
+    if (enableHttpHeaders) {
+      httpOptions = {
+       headers: new HttpHeaders({
+         'Content-Type':  'application/json'
+       }),
+        withCredentials: false,
+        observe: 'response' as 'response'
+     };
+   }
+    return this.http.put(path, body, httpOptions);
   }
 }

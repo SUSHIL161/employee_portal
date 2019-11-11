@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.model.Employee;
 import com.service.EmployeeService;
-@CrossOrigin("http://127.0.0.1:4401")
+@CrossOrigin("http://localhost:4401")
 @RestController
 public class EmployeeController {
 	@Autowired

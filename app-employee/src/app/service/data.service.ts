@@ -16,4 +16,7 @@ export class DataService {
   addEmployee(employee):Observable<any> {
     return this.apiService.postJSONData("http://localhost:7075/addEmployee", employee, true);
   }
+  updateEmployee(empID:string,employee:any):Observable<any> {
+    return this.apiService.putJSONData("http://localhost:7075/updateEmployee/"+empID, JSON.stringify(employee), true);
+  }
 }
