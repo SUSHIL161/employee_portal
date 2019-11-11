@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.model.Employee;
 import com.service.EmployeeService;
+import com.utility.ReturnObject;
 @CrossOrigin("http://localhost:4401")
 @RestController
 public class EmployeeController {
@@ -33,12 +34,12 @@ public class EmployeeController {
 	}
 	
 	@PostMapping("/addEmployee")
-	public boolean addEmployee(@RequestBody Employee employee) {		
+	public ReturnObject addEmployee(@RequestBody Employee employee) {
 		return employeeService.addEmployee(employee);
 	}
 	
 	@PutMapping("/updateEmployee/{empID}")
-	public boolean updateEmployee(@RequestBody Employee employee, @PathVariable int empID) {
+	public ReturnObject updateEmployee(@RequestBody Employee employee, @PathVariable int empID) {
 		return employeeService.updateEmployee(employee, empID);
 	}
 	

@@ -7,13 +7,16 @@ import java.util.stream.Collectors;
 
 import com.dao.EmployeeDAO;
 import com.model.Employee;
+import com.utility.ReturnObject;
 
 public class EmployeeDAOImpl implements EmployeeDAO{
 	
 	Map<Integer, Employee> employees;
 	
+	ReturnObject returnObject;
 	public EmployeeDAOImpl() {
 		employees = new HashMap<>();
+		returnObject = new ReturnObject();
 	}
 
 	@Override
@@ -29,23 +32,29 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 	}
 
 	@Override
-	public boolean addEmployee(Employee employee) {
+	public ReturnObject addEmployee(Employee employee) {
 		int empID = employee.hashCode();
 		if(employees.containsKey(empID) || !validateEmployee(employee)) {
-			return false;
+			returnObject.setSuccess(false);
+		} else {
+			employee.setEmpID(empID);
+			employees.put(empID, employee);
+			returnObject.setSuccess(true);
+			returnObject.setEmployee(employee);
 		}
-		employee.setEmpID(empID);
-		employees.put(empID, employee);
-		return true;
+		return returnObject;
 	}
 
 	@Override
-	public boolean updateEmployee(Employee employee, int empID) {
+	public ReturnObject updateEmployee(Employee employee, int empID) {
 		if(!validateEmployee(employee) || !employees.containsKey(empID)) {
-			return false;
+			returnObject.setSuccess(false);
+		} else {
+			employees.put(empID, employee);
+			returnObject.setSuccess(true);
+			returnObject.setEmployee(employee);
 		}
-		employees.put(empID, employee);
-		return true;
+		return returnObject;
 	}
 
 	private boolean validateEmployee(Employee employee) {

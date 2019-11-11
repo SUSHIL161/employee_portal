@@ -59,8 +59,9 @@ export class EmployeeComponent implements OnInit {
   submit = () => {
     if(this.isupdate) {
       this.dataService.updateEmployee(this.employee.empID, this.employee).subscribe((response) => {
-        if(response.body) {
-          let index = this.employees.findIndex(employee=> employee.empID === this.employee.empID);
+        if(response.body.success && response.body.employee) {
+          let index = this.employees.findIndex(employee=> employee.empID === this.employeeBeingEdited.empID);
+          this.employee = response.body.employee;
           if(index >=0 ) {
             this.employees[index] = this.employee;
             alert('Upated Successfully');
@@ -76,7 +77,8 @@ export class EmployeeComponent implements OnInit {
       });
     } else {
       this.dataService.addEmployee(this.employee).subscribe((response) => {
-        if(response.body) {
+        if(response.body.success && response.body.employee) {
+          this.employee = response.body.employee;
           this.employees.push(this.employee);
           this.sortEmployee();
           alert('Saved Successfully');
