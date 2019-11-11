@@ -31,6 +31,7 @@
         <label for="firstName"> {{ i18text.employee.form.firstName | translate }} </label>
         <input type="text" class="form-control" id="firstName" [(ngModel)] = "employee.firstName"
           name="firstName" #firstName="ngModel" required pattern = "^[a-zA-Z0-9]+$"
+          (ngModelChange)="parseText('firstName')" (blur)="parseText('firstName')"
           placeholder="{{ i18text.employee.form.label.firstName | translate }}" name="firstName">
           <span class="label-error" *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
             <i *ngIf="(firstName.errors && firstName.errors.required)">** {{ 'employee.validator.firstName.empty' | translate }} </i>
@@ -41,6 +42,7 @@
         <label for="lastName">{{ i18text.employee.form.lastName | translate }}</label>
         <input type="text" class="form-control" id="lastName" [(ngModel)] = "employee.lastName"
           name="lastName" #lastName="ngModel" required pattern = "^[a-zA-Z0-9]+$"
+          (ngModelChange)="parseText('lastName')" (blur)="parseText('lastName')"
           placeholder="{{ i18text.employee.form.label.lastName | translate }}">
           <span class="label-error" *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
               <i *ngIf="(lastName.errors && lastName.errors.required)">** {{ 'employee.validator.lastName.empty' | translate }} </i>
@@ -64,32 +66,31 @@
           </label>
         </div>
       </div>
-      
       <div class="form-group">
           <label for="dateOfBirth"> {{ i18text.employee.form.label.dateOfBirth | translate }} </label>
           <input type="date" class="form-control" id="dateOfBirth" [(ngModel)] = "employee.dateOfBirth"
           name="dateOfBirth" #dateOfBirth="ngModel" required
+          (ngModelChange)="parseText('dateOfBirth')" (blur)="parseText('dateOfBirth')"
           placeholder="{{ i18text.employee.form.label.dateOfBirth | translate }}" name="dateOfBirth">
           <span class="label-error" *ngIf="dateOfBirth.invalid && (dateOfBirth.dirty || dateOfBirth.touched)">
               <i *ngIf="(dateOfBirth.errors && dateOfBirth.errors.required)">** {{ 'employee.validator.dateOfBirth.empty' | translate }} </i>
           </span>
       </div>
-
       <div class="form-group">
           <label for="department"> {{ i18text.employee.form.label.department | translate }} </label>
           <input type="text" class="form-control" id="department" [(ngModel)] = "employee.department"
           name="department" #department="ngModel" required pattern = "^[a-zA-Z0-9]+$"
+          (ngModelChange)="parseText('department')" (blur)="parseText('department')"
           placeholder="{{ i18text.employee.form.label.department | translate }}" name="department">
           <span class="label-error" *ngIf="department.invalid && (department.dirty || department.touched)">
               <i *ngIf="(department.errors && department.errors.required)">** {{ 'employee.validator.department.empty' | translate }} </i>
               <i *ngIf="(department.errors && department.errors.pattern)">** {{ 'employee.validator.department.valid' | translate }} </i>
           </span>
       </div>
-      
-      <button type="submit" (click) = "submit()" class="btn btn-primary">{{ i18text.employee.form.submit | translate }}</button>
-</div>
-<div *ngIf="i18text && showView && !showView.viewAll && !showView.registration">
-    <h3 style="text-align: center;"> Select one option from header</h3>
+      <button type="submit" (click) = "submit()" class="btn btn-primary"
+       [disabled] = "isError()">
+        {{ i18text.employee.form.submit | translate }}
+      </button>
 </div>
 
 

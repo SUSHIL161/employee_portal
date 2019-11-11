@@ -16,16 +16,14 @@ export class EmployeeComponent implements OnInit {
   isupdate: boolean = false;
   employeeBeingEdited: any = {};
   formError:any = {};
-  nameExclPatt: RegExp;
+  textPattern: RegExp;
 
   constructor(private dataService: DataService, private translateService: TranslateService) {
     this.translateService.setDefaultLang('en');
     this.translateService.use('en');
     this.translateService.get('employee').subscribe((res: any) => {
       this.i18text = {'employee': res};
-      console.log(JSON.stringify(this.i18text));
     }, (error) => {
-      console.log(error)
     });
 
    }
@@ -37,10 +35,10 @@ export class EmployeeComponent implements OnInit {
     );
     this.headers = ['First Name', 'Last Name', 'Gender', 'Date of Birth', 'Department'];
     this.showView = {
-      'registration': false,
+      'registration': true,
       'viewAll': false
     }
-    this.nameExclPatt = new RegExp(/[/\"\\*?<>|',:]/g);
+    this.textPattern = new RegExp(/^[a-zA-Z][a-zA-Z]*$/g);
   }
 
   onUpdate = (employee) => {
@@ -100,13 +98,13 @@ export class EmployeeComponent implements OnInit {
   }
 
   parseText = (key:string) => {
-    if(key.trim().length > 0) {
-      if(this.formError[key]) {
-        delete this.formError[key]['empty'];
-      }
+    if(this.employee[key] && this.employee[key].trim().length > 0) {
+      delete this.formError[key];
     } else {
-      this.formError[key] = {empty: true};
-      return;
+      this.formError[key] = true;
     }
   }
+  
+  isError = () =>  Object.keys(this.formError).length > 0;
+
 }
