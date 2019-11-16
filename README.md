@@ -8,7 +8,7 @@ cd employee-portal
 
 mvn clean install
 
-java -jar target/employee-portal-1.jar
+java -jar target/employee-portal-1.jar --httpPort=7075
 
 # Go to parent directory 
 
