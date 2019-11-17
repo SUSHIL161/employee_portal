@@ -1,8 +1,8 @@
 <div class="sidenav">
   </div>
 <div class="header" *ngIf="i18text">
-    <button id="emp-reg" class="tablink" (click)="selectView('registration', 'viewAll')" id="defaultOpen">{{ i18text.employee.headers.registration | translate }}</button>
-    <button id="emp-list" class="tablink" (click)="selectView('viewAll', 'registration')">{{ i18text.employee.headers.list | translate }}</button>
+    <button id="emp-reg" class="tablink" (click)="selectView('registration', 'viewAll',false)" id="defaultOpen">{{ i18text.employee.headers.registration | translate }}</button>
+    <button id="emp-list" class="tablink" (click)="selectView('viewAll', 'registration',true)">{{ i18text.employee.headers.list | translate }}</button>
 </div>
 <div class="view-details" *ngIf="i18text && showView && showView.viewAll">
     <div class="emp-details">
@@ -92,6 +92,5 @@
         {{ i18text.employee.form.submit | translate }}
       </button>
 </div>
-
 
 

@@ -40,6 +40,12 @@
             "dateOfBirth": {
                 "empty": "कृपया जन्म तिथि चुनें"
             }
+        },
+        "operation": {
+            "saveSuccess": "Saved Successfully",
+            "saveFail": "Failed to Save",
+            "updateSuccess":"Upated Successfully",
+            "updateFail": "Failed to Update"
         }
     }
 }

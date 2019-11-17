@@ -40,6 +40,12 @@
             "dateOfBirth": {
                 "empty": "Please choose date of birth"
             }
+        },
+        "operation": {
+            "saveSuccess": "Saved Successfully",
+            "saveFail": "Failed to Save",
+            "updateSuccess":"Upated Successfully",
+            "updateFail": "Failed to Update"
         }
     }
 }

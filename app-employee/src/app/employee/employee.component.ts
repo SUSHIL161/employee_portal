@@ -39,6 +39,7 @@ export class EmployeeComponent implements OnInit {
       'viewAll': false
     }
     this.textPattern = new RegExp(/^[a-zA-Z][a-zA-Z]*$/g);
+    this.isupdate = false;
   }
 
   onUpdate = (employee) => {
@@ -64,16 +65,16 @@ export class EmployeeComponent implements OnInit {
           this.employee = response.body.employee;
           if(index >=0 ) {
             this.employees[index] = this.employee;
-            alert('Upated Successfully');
+            alert(this.i18text.employee.operation.updateSuccess);
             this.sortEmployee();
           } else {
-            alert('Failed to Save');
+            alert(this.i18text.updateFail);
           }
         } else {
-          alert('Failed to Save');
+          alert(this.i18text.updateFail);
         }
       }, (error) => {
-        alert('Failed to Update');
+        alert(this.i18text.updateFail);
       });
     } else {
       this.dataService.addEmployee(this.employee).subscribe((response) => {
@@ -81,22 +82,23 @@ export class EmployeeComponent implements OnInit {
           this.employee = response.body.employee;
           this.employees.push(this.employee);
           this.sortEmployee();
-          alert('Saved Successfully');
+          alert(this.i18text.employee.operation.saveSuccess);
         } else {
-          alert('Failed to Save');
+          alert(this.i18text.employee.operation.saveFail);
         }
       }), error => {
-        alert('Failed to Save');
+        alert(this.i18text.employee.operation.saveFail);
       }
     }
 
   }
 
-  selectView = (option1, option2) => {
+  selectView = (option1, option2, isupdate) => {
     this.showView[option1] = true;
     this.showView[option2] = false;
     this.employee = {};
     this.formError = {};
+    this.isupdate = isupdate;
   }
 
   parseText = (key:string) => {
