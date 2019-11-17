@@ -1,0 +1,45 @@
+{
+    "employee" : {
+        "headers": {
+            "registration": "पंजीकरण",
+            "list": "सूचि"
+        },
+        "body": {
+            "details": "कर्मचारी विवरण:"
+        },
+        "form": {
+            "registration": "पंजीकरण",
+            "firstName": "पहला नाम",
+            "lastName": "अंतिम नाम",
+            "dateOfBirth": "जन्म की तारीख",
+            "department": "विभाग",
+            "male": "पुरुष",
+            "female": "महिला",
+            "submit": "जमा करें",
+            "label": {
+                "firstName": "पहला नाम दर्ज करो",
+                "lastName": "अंतिम नाम दर्ज करो",
+                "gender": "लिंग चुनें:",
+                "dateOfBirth": "जन्म तिथि चुनें",
+                "department": "विभाग दर्ज करें"
+            }
+        },
+        "validator": {
+            "firstName": {
+                "empty": "कृपया पहला नाम दर्ज करें",
+                "valid": "पहला नाम मान्य नहीं है"
+            },
+            "lastName": {
+                "empty": "कृपया अंतिम नाम दर्ज करें",
+                "valid": "अंतिम नाम मान्य नहीं है"
+            },
+            "department": {
+                "empty": "कृपया विभाग दर्ज करें",
+                "valid": "विभाग मान्य नहीं है"
+            },
+            "dateOfBirth": {
+                "empty": "कृपया जन्म तिथि चुनें"
+            }
+        }
+    }
+}
